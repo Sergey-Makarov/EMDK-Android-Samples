@@ -1,7 +1,7 @@
 /*
-* Copyright (C) 2015-2019 Zebra Technologies Corporation and/or its affiliates
-* All rights reserved.
-*/
+ * Copyright (C) 2015-2019 Zebra Technologies Corporation and/or its affiliates
+ * All rights reserved.
+ */
 package com.symbol.profileappmgrsample1;
 
 import java.io.StringReader;
@@ -13,6 +13,7 @@ import com.symbol.emdk.EMDKManager;
 import com.symbol.emdk.EMDKResults;
 import com.symbol.emdk.ProfileManager;
 import com.symbol.emdk.EMDKManager.EMDKListener;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -66,7 +67,7 @@ public class MainActivity extends Activity implements EMDKListener, OnCheckedCha
 
         statusTextView = (TextView) findViewById(R.id.textViewStatus);
         helpTextView = (TextView) findViewById(R.id.textViewHelp);
-        appRadioGroup = (RadioGroup)findViewById(R.id.radioGroupApp);
+        appRadioGroup = (RadioGroup) findViewById(R.id.radioGroupApp);
 
         appRadioGroup.setOnCheckedChangeListener(this);
 
@@ -76,9 +77,9 @@ public class MainActivity extends Activity implements EMDKListener, OnCheckedCha
         EMDKResults results = EMDKManager.getEMDKManager(getApplicationContext(), this);
 
         //Check the return status of EMDKManager object creation.
-        if(results.statusCode == EMDKResults.STATUS_CODE.SUCCESS) {
+        if (results.statusCode == EMDKResults.STATUS_CODE.SUCCESS) {
             //EMDKManager object creation success
-        }else {
+        } else {
             //EMDKManager object creation failed
         }
     }
@@ -131,7 +132,7 @@ public class MainActivity extends Activity implements EMDKListener, OnCheckedCha
 
     private void addSetButtonListener() {
 
-        Button setButton = (Button)findViewById(R.id.buttonSet);
+        Button setButton = (Button) findViewById(R.id.buttonSet);
 
         setButton.setOnClickListener(new OnClickListener() {
 
@@ -155,10 +156,7 @@ public class MainActivity extends Activity implements EMDKListener, OnCheckedCha
                         break;
                 }
 
-                if(readValues())
-                    modifyProfile_XMLString();
-                else
-                    statusTextView.setText("The above field cannot be empty.");
+                new ProcessProfileTask().execute("");
             }
         });
 
@@ -166,7 +164,7 @@ public class MainActivity extends Activity implements EMDKListener, OnCheckedCha
 
     private boolean readValues() {
 
-        EditText nameEditText = (EditText)findViewById(R.id.editTextName);
+        EditText nameEditText = (EditText) findViewById(R.id.editTextName);
         name = nameEditText.getText().toString().trim();
 
         if ((name != null) && (name.length() > 0)) {
@@ -175,47 +173,10 @@ public class MainActivity extends Activity implements EMDKListener, OnCheckedCha
         return false;
     }
 
-    private void modifyProfile_XMLString() {
-
-        statusTextView.setText("");
-        errorType = "";
-        parmName = "";
-        errorDescription = "";
-        errorString = "";
-
-        //Prepare XML to modify the existing profile
-        String[] modifyData = new String[1];
-
-        if (bInstall) {
-            modifyData[0]=
-                    "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                            "<characteristic type=\"Profile\">" +
-                            "<parm name=\"ProfileName\" value=\"AppMgrProfile-1\"/>" +
-                            "<characteristic type=\"AppMgr\" version=\"0.5\">" +
-                            "<parm name=\"Action\" value=\"" + action + "\"/>" +
-                            "<parm name=\"APK\" value=\"" + name + "\"/>" +
-                            "</characteristic>" +
-                            "</characteristic>";
-        }
-        else {
-            modifyData[0]=
-                    "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                            "<characteristic type=\"Profile\">" +
-                            "<parm name=\"ProfileName\" value=\"AppMgrProfile-1\"/>" +
-                            "<characteristic type=\"AppMgr\" version=\"0.5\">" +
-                            "<parm name=\"Action\" value=\"" + action + "\"/>" +
-                            "<parm name=\"Package\" value=\"" + name + "\"/>" +
-                            "</characteristic>" +
-                            "</characteristic>";
-        }
-
-        new ProcessProfileTask().execute(modifyData[0]);
-    }
-
     @Override
     public void onCheckedChanged(RadioGroup group, int id) {
 
-        switch(id) {
+        switch (id) {
             case R.id.radioInstall:
             case R.id.radioUpgrade:
                 bInstall = true;
@@ -287,7 +248,7 @@ public class MainActivity extends Activity implements EMDKListener, OnCheckedCha
             String resultString = "";
 
             //Check the return status of processProfile
-            if(results.statusCode == EMDKResults.STATUS_CODE.CHECK_XML) {
+            if (results.statusCode == EMDKResults.STATUS_CODE.CHECK_XML) {
 
                 // Get XML response as a String
                 String statusXMLResponse = results.getStatusString();
@@ -301,17 +262,16 @@ public class MainActivity extends Activity implements EMDKListener, OnCheckedCha
                     // Call method to parse the response
                     parseXML(parser);
 
-                    if ( TextUtils.isEmpty(parmName) && TextUtils.isEmpty(errorType) && TextUtils.isEmpty(errorDescription) ) {
+                    if (TextUtils.isEmpty(parmName) && TextUtils.isEmpty(errorType) && TextUtils.isEmpty(errorDescription)) {
 
                         resultString = "Profile update success.";
-                    }
-                    else {
+                    } else {
 
                         resultString = "Profile update failed." + errorString;
                     }
 
                 } catch (XmlPullParserException e) {
-                    resultString =  e.getMessage();
+                    resultString = e.getMessage();
                 }
             }
 

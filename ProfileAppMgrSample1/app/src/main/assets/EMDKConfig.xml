@@ -1,15 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?><!--This is an auto generated document. Changes to this document may cause incorrect behavior.--><wap-provisioningdoc>
   <characteristic type="ProfileInfo">
-    <parm name="created_wizard_version" value="2.1.9"/>
+    <parm name="created_wizard_version" value="7.3.2"/>
   </characteristic>
   <characteristic type="Profile">
     <parm name="ProfileName" value="AppMgrProfile-1"/>
     <parm name="ModifiedDate" value="2014-06-20 16:34:43"/>
 
-    <characteristic type="AppMgr" version="0.5">
-      <parm name="emdk_name" value=""/>
-      <parm name="Action" value="Install"/>
-      <parm name="APK" value="/sdcard/TestApp.apk"/>
+    <characteristic version="5.0" type="FileMgr">
+      <parm name="FileAction" value="1" />
+      <characteristic type="file-details">
+        <parm name="TargetAccessMethod" value="2" />
+        <parm name="TargetPathAndFileName" value="/sdcard/app-itemStatus-release-1.0.21.2010120843-21.apk" />
+        <parm name="SourceAccessMethod" value="1" />
+        <parm name="SourceURI" value="&amp;#1270&amp;#127OXTHFScrQuLpZQ2anuklSPgf16Q48QA80ln5gu+fsDBD6OYhgTgExcazHvVeEjN4mkpOO4KWnco4/CklShWu4ts43Xv9E2PxaVwg2t1jnuPbfQ/Qgffz8hyBdgtQo4b43slNd7CGdPKgdsrfsowHI6k1AmELaQmTFl7HYyqKGxeQXygFVW6Huv0uDTKwMYGrzMiiCIFAPcZiow790p87fzV6BOpq0AUUx+oWDBc0Vf5KOnGm4LXSQIw7MVM0v0mEIAoP3SEfHR7Tq0YqHcQU1SRKEUlwFjLZ7cVK1Bs67R6a+d8xkdzF1xo0PhbFsNdrKh1fCL0N/LGXBytp3XGQ5Q==" />
+      </characteristic>
     </characteristic>
+    <!--SettingID=18-->
+    <characteristic version="8.1" type="Wi-Fi">
+      <characteristic type="System">
+        <parm name="WiFiAction" value="enable" />
+      </characteristic>
+      <parm name="UseRegulatory" value="0" />
+      <parm name="UseDiagnosticOptions" value="0" />
+      <parm name="UseAdvancedOptions" value="0" />
+      <parm name="NetworkAction" value="Disconnect" />
+      <characteristic type="network-profile">
+        <parm name="SSID" value="TechTeam" />
+      </characteristic>
+      <parm name="UseHotspotOptions" value="0" />
+    </characteristic>
+    <!--SettingID=19-->
+    <characteristic version="8.1" type="Wi-Fi">
+      <characteristic type="System">
+        <parm name="WiFiAction" value="enable" />
+      </characteristic>
+      <parm name="UseRegulatory" value="0" />
+      <parm name="UseDiagnosticOptions" value="0" />
+      <parm name="UseAdvancedOptions" value="0" />
+      <parm name="NetworkAction" value="DisableAll" />
+      <parm name="UseHotspotOptions" value="0" />
+    </characteristic>
+    <!--SettingID=20-->
+    <characteristic version="8.1" type="Wi-Fi">
+      <characteristic type="System">
+        <parm name="WiFiAction" value="enable" />
+      </characteristic>
+      <parm name="UseRegulatory" value="0" />
+      <parm name="UseDiagnosticOptions" value="0" />
+      <parm name="UseAdvancedOptions" value="0" />
+      <parm name="NetworkAction" value="Add" />
+      <characteristic type="network-profile">
+        <parm name="SSID" value="TechTeam" />
+        <parm name="SecurityMode" value="1" />
+        <parm name="WPAMode" value="3" />
+        <characteristic type="key-details">
+          <parm name="KeyType" value="Passphrase" />
+          <parm name="ProtectKey" value="1" />
+          <parm name="PassphraseWPAEncrypted" value="&amp;#1270&amp;#127uPXzwLC72ZFa0sqQlEh/zY3lxDL3mqzVKr7Y0c+m4eaGhp9RvZ1aXLdnt5qKn4VgQtgq1hcf147lE8M/GWR0UK0YJ3Y3+FpZN254hmBQXQPlD04yagOeJhIEJ/1f7bdelaCXOptLpI79fSVEbIrcaFsBRyAQetV8vRWbWFHElBr1OXZvMTXyQb/QxfoQLPlaq1O5GZpATqMTwod+yO79iUUK8jiMP7Bjf+wJjtmOBs611+ShLhZ32QAbT3bC0aDGfkG/OA0voUH3Q0SlGFweIgpfkyKBur4LGbPK/wguXAWBJRKz5Q9RjfCNg7WGDROe4opafXDnHJJZXOmawAI3cQ==" />
+        </characteristic>
+        <parm name="UseDHCP" value="1" />
+        <parm name="UseProxy" value="0" />
+      </characteristic>
+      <parm name="UseHotspotOptions" value="0" />
+    </characteristic>
+    <!--SettingID=21-->
+    <characteristic version="8.1" type="Wi-Fi">
+      <characteristic type="System">
+        <parm name="WiFiAction" value="enable" />
+      </characteristic>
+      <parm name="UseRegulatory" value="0" />
+      <parm name="UseDiagnosticOptions" value="0" />
+      <parm name="UseAdvancedOptions" value="0" />
+      <parm name="NetworkAction" value="Connect" />
+      <characteristic type="network-profile">
+        <parm name="SSID" value="TechTeam" />
+      </characteristic>
+      <parm name="UseHotspotOptions" value="0" />
+    </characteristic>
+    <!--SettingID=23-->
+    <characteristic version="8.0" type="AppMgr">
+      <parm name="Action" value="Install" />
+      <parm name="APK" value="/sdcard/app-itemStatus-release-1.0.21.2010120843-21.apk" />
+    </characteristic>
+
   </characteristic>
+
 </wap-provisioningdoc>
